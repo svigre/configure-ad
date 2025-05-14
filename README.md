@@ -22,6 +22,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 - Create two Virtual Machines (DC-1 and Client-1)
 - Set DC-1's private IP address to static
+- Join the Client-1 VM to the domain of the DC-1 VM
 - Install Active Directory Domain Services on the DC-1 VM
 - Set up our domain admin user in DC-1
 
@@ -63,8 +64,12 @@ Next we will change the DNS server on Client-1 to the static private IP adress o
 <p>
   
 </p>
+
+![image 9](https://github.com/user-attachments/assets/271b55bf-4286-40b7-a9d5-b8559ec02f75)
+
+
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Once both of the VMs have restarted, we will log into the Client-1 virtual machine through Remote Desktop. Inside the Client-1 vm, we will attempt to ping DC-1's IP address using Powershell. This should be successfull for us now since we disabled DC-1's firewall earlier, allowing the machine to respond to the ping. Now open Powershell as an administrator and write in the command "ipconfig /all" on Client-1 to confirm that DC-1 is configured as the DNS server for the virtual machine.   
 </p>
 <br />
 
