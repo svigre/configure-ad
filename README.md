@@ -69,14 +69,24 @@ Next we will change the DNS server on Client-1 to the static private IP adress o
 
 
 <p>
-Once both of the VMs have restarted, we will log into the Client-1 virtual machine through Remote Desktop. Inside the Client-1 vm, we will attempt to ping DC-1's IP address using Powershell. This should be successfull for us now since we disabled DC-1's firewall earlier, allowing the machine to respond to the ping. Now open Powershell as an administrator and write in the command "ipconfig /all" on Client-1 to confirm that DC-1 is configured as the DNS server for the virtual machine.   
+Once both of the VMs have restarted, we will log into the Client-1 virtual machine through Remote Desktop. Inside the Client-1 vm, we will attempt to ping DC-1's IP address using Powershell. This should be successfull for us now since we disabled DC-1's firewall earlier, allowing the machine to respond to the ping. To do this, open Powershell as an administrator and write in the command "ping". When the ping is a success, write in the command "ipconfig /all" on Client-1 to confirm that DC-1 is configured as the DNS server for the virtual machine.  
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+![image 11](https://github.com/user-attachments/assets/7e5bccc6-0745-45a5-92ee-e2710954e236)
+
+Now we log into the Domain Controller (DC-1) and install Active Directory Domain Services (AD DS). 
+
+
+
+![image 12](https://github.com/user-attachments/assets/49c3174b-e1b3-4c18-8f4b-2c476b2f5ce6)
+
+--> We will promote DC-1 to a Domian Controller and set up a new forest using the domain name "mydomain.com". 
+
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  
 </p>
 <br />
