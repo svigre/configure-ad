@@ -85,6 +85,25 @@ Now we log into the Domain Controller (DC-1) and install Active Directory Domain
 
 --> We will promote DC-1 to a Domian Controller and set up a new forest using the domain name "mydomain.com". 
 
+
+![image 15](https://github.com/user-attachments/assets/9dfdcf9a-4643-4d19-b7e9-4e3ebaacd671)
+![image 16](https://github.com/user-attachments/assets/ebb6caf0-b7e1-4f9e-8f60-282eea11663a)
+
+We now create two organizational units called "_EMPLOYEES" and "_ADMINS". To do this, open Active Directory Users and Computers --> right-click on mydomain.com and select "new"--> choose "Organizational Unit". 
+
+
+![image 17](https://github.com/user-attachments/assets/e7975006-ef6c-43ba-8f96-251ed537a1a3)
+![image 18](https://github.com/user-attachments/assets/eadcc633-0799-48a4-a54b-8d3404ffdc60)
+
+Next step is to create a user. We will do this in the _ADMINS organizational unit -->right-click and choose new -->user. This users name is Kate Doe and will have the username "kate_admin".
+
+![image 20](https://github.com/user-attachments/assets/323682e5-b769-4cf5-9906-6f4b9fe5b242)
+
+Next, we will add Kate as a Domain Admin. To do this right-click on Kates account --> properties --> member off --> click "add". A new promp will appear. Here you can write "domain admins"--> check name (it will find a domain admin build in group)--> ok. Apply the changes. 
+
+
+
+
 </p>
 <p>
   
