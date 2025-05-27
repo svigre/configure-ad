@@ -99,7 +99,24 @@ Next step is to create a user. We will do this in the _ADMINS organizational uni
 
 ![image 20](https://github.com/user-attachments/assets/323682e5-b769-4cf5-9906-6f4b9fe5b242)
 
-Next, we will add Kate as a Domain Admin. To do this right-click on Kates account --> properties --> member off --> click "add". A new promp will appear. Here you can write "domain admins"--> check name (it will find a domain admin build in group)--> ok. Apply the changes. 
+Next, we will add Kate as a Domain Admin. To do this right-click on Kates account --> properties --> member off --> click "add". Now a new promp will appear. Here you can write in "domain admins"--> check name (it will find a domain admin build in group)--> ok. Apply the changes.
+Now, we will log out of DC-1 and reconnect using RDP with the credentials "mydomain.com/kate_admin" and the assigned password. We will use this account for all future logins to DC-1. 
+
+
+![image 21](https://github.com/user-attachments/assets/376650cc-9448-4b11-9e74-367cf0fb871f)
+
+
+Next step is to join Client-1 to the domain. (We have already set Client-1's DNS settings to the DC1's Private IP address from the Azure Portal). So to do this, log into Client-1 VM. Right-click on the Windows logo, select System--> rename this PC (Advances). A new promp will appera, click Change. In the new promp select Domain and enter the domain name "mydomain.com" --> ok. The VM will restart to aplly the changes.
+
+
+![image 23](https://github.com/user-attachments/assets/1e5cee8f-1397-431c-9a46-adf209dbc041)
+
+Go back to DC-1 and open Active Directory Users and Computers. We will now create another organizational unit named _CLIENTS under mydomain.com
+
+
+
+
+
 
 
 
