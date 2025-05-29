@@ -100,7 +100,7 @@ Next step is to create a user. We will do this in the _ADMINS organizational uni
 ![image 20](https://github.com/user-attachments/assets/323682e5-b769-4cf5-9906-6f4b9fe5b242)
 
 Next, we will add Kate as a Domain Admin. To do this right-click on Kates account --> properties --> member off --> click "add". Now a new promp will appear. Here you can write in "domain admins"--> check name (it will find a domain admin build in group)--> ok. Apply the changes.
-Now, we will log out of DC-1 and reconnect using RDP with the credentials "mydomain.com/kate_admin" and the assigned password. We will use this account for all future logins to DC-1. 
+Now, we will log out of DC-1 and reconnect using RDP with the credentials "mydomain.com\kate_admin" and the assigned password. We will use this account for all future logins to DC-1. 
 
 
 ![image 21](https://github.com/user-attachments/assets/376650cc-9448-4b11-9e74-367cf0fb871f)
