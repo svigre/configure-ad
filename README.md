@@ -113,6 +113,38 @@ Next step is to join Client-1 to the domain. (We have already set Client-1's DNS
 
 Go back to DC-1 and open Active Directory Users and Computers. We will now create another organizational unit named _CLIENTS under mydomain.com
 
+![Screenshot 2025-05-29 110551](https://github.com/user-attachments/assets/d5de3dfe-f145-4ec6-927c-7c0a95c09b5b)
+
+The next step is to allow domain users to RDP access into the VM. To to this, we go back to Azure portal and log into Client-1 VM as Kate_admin. Once inside the VM, right-click on the Windows logo and select "system". Find "Remote Deskctop" on the left side and click on it. Click on "Select users that can remotely access this PC". 
+Now a new prompt will appear--> click on add --> wite "Domain Users" (you can click on "check names" to be sure you wrote the correct name) --> click OK. 
+
+
+![Screenshot 2025-05-29 111011](https://github.com/user-attachments/assets/c1b9599d-d9b9-4b2f-bf18-1b5aafa9ea07)
+
+
+![Screenshot 2025-05-29 111533](https://github.com/user-attachments/assets/b97e4d5c-d8ac-4283-b4a3-c306bf14375a)
+
+In this step we will use a script found here: https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1. 
+Log into DC-1 as Kate_admin and open PowerShell ISE as an administrator. Create a new file and paste the script into it, then execute it. Now we can observe as thousands of accounts are created automatically. 
+
+
+![Screenshot 2025-05-29 115011](https://github.com/user-attachments/assets/63c43d02-700e-4c27-98f5-605c3f60bfe0)
+
+After running the script, we open Active Directory Users and Computers to vertify that the account have been created. Click on the folder "_EMPLOYEES". Here you will see the accounts in the appropriate organizational unit. 
+
+
+![Screenshot 2025-05-29 115236](https://github.com/user-attachments/assets/d2b507f0-6b08-4ec9-b115-63223da66b41)
+
+Last step we log into the Client-1 VM using one of the accounts we just made using the PowerShell script. We do this by using the username for the account we choose and the default password "Password1". When you are logged inn, open PowerShell to vertify that you are logged in as one of the script-created users.
+
+
+
+
+
+
+
+
+
 
 
 
