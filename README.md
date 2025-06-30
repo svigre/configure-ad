@@ -39,8 +39,10 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 
 
-First step, we need to create two Virtual Machines: One running  Windows Server 2022, named DC-1. Pick the vm with 2vcpus. The other VM will run on Windows 10, named Client1. Pick the vm with 2vcpus. Both VM's should be connetcted to the same virtual network (VNet). 
-Once you have created both of the VMs, we will configure the IP address on the domain controller (DC-1), changing it from dynamic to static. By doing this, we will ensure that the client vm (Client-1) can join the domain and use DC-1 as its DNS server.   
+First step, we need to create two Virtual Machines: One running  Windows Server 2022, named DC-1. Pick the VM with 2vcpus. The other VM will run on Windows 10, named Client1. Pick the VM with 2vcpus. Both VM's should be connetcted to the same virtual network (VNet). 
+Once you have created both of the VMs, we will configure the IP address on the domain controller (DC-1), changing it from dynamic to static. By doing this, we will ensure that the client VM (Client-1) can join the domain and use DC-1 as its DNS server.   
+
+---
 
 
 </p>
@@ -52,16 +54,21 @@ Once you have created both of the VMs, we will configure the IP address on the d
   ![image 4](https://github.com/user-attachments/assets/03f63707-045d-471e-adf6-478dfd56e17f) ![image 5](https://github.com/user-attachments/assets/7ccacb7e-b538-496b-bef1-565cfcd177c8)
 
 
-Next step is to enter the domain controller (DC-1) through a remote desktop connection (RDP). Here we will disable the firewall for the domain, private and publick profile. To do this we right-click the windows symbol and select "run", or you can simply click on "windown button+R". Type in "wf.msc"-->ok. 
+
+Next step is to enter the domain controller (DC-1) through a Remote Desktop Connection (RDP). Here we will disable the firewall for the domain, private and publick profile. To do this we right-click the windows symbol and select "run", or you can simply click on "windown button+R". Type in "wf.msc" --> ok. 
 In the Windows Defender Firewall window, ensure the firewall is turned off for all profiles, then click "apply" and "ok".  
 </p>
 <br />
 
+---
+
 ![image 7](https://github.com/user-attachments/assets/9891a7df-1d0b-4a7e-b891-577823663064)
 
 
-Next we will change the DNS server on Client-1 to the static private IP adress of DC-1. To do this we need to go back to Azure portal --> Virtual Machines --> Client-1 and go to Network Settings--> DNS server. After making this change, we need to restart both of the VMs to apply the new DNS configuration. 
+Next we will change the DNS server on Client-1 to the static private IP adress of DC-1. To do this we need to go back to Azure portal --> Virtual Machines --> Client-1 and go to Network Settings --> DNS server. After making this change, we need to restart both of the VMs to apply the new DNS configuration. 
 <p>
+
+---
   
 </p>
 
@@ -69,9 +76,11 @@ Next we will change the DNS server on Client-1 to the static private IP adress o
 
 
 <p>
-Once both of the VMs have restarted, we will log into the Client-1 virtual machine through Remote Desktop. Inside the Client-1 vm, we will attempt to ping DC-1's IP address using Powershell. This should be successfull for us now since we disabled DC-1's firewall earlier, allowing the machine to respond to the ping. To do this, open Powershell as an administrator and write in the command "ping". When the ping is a success, write in the command "ipconfig /all" on Client-1 to confirm that DC-1 is configured as the DNS server for the virtual machine.  
+Once both of the VMs have restarted, we will log into the Client-1 virtual machine through Remote Desktop. Inside the Client-1 VM, we will attempt to ping DC-1's IP address using Powershell. This should be successfull for us now since we disabled DC-1's firewall earlier, allowing the machine to respond to the ping. To do this, open Powershell as an administrator and write in the command "ping". When the ping is a success, write the command "ipconfig /all" on Client-1 to confirm that DC-1 is configured as the DNS server for the Virtual Machine.  
 </p>
 <br />
+
+---
 
 <p>
 
@@ -79,11 +88,13 @@ Once both of the VMs have restarted, we will log into the Client-1 virtual machi
 
 Now we log into the Domain Controller (DC-1) and install Active Directory Domain Services (AD DS). 
 
-
+---
 
 ![image 12](https://github.com/user-attachments/assets/49c3174b-e1b3-4c18-8f4b-2c476b2f5ce6)
 
 --> We will promote DC-1 to a Domian Controller and set up a new forest using the domain name "mydomain.com". 
+
+---
 
 
 ![image 15](https://github.com/user-attachments/assets/9dfdcf9a-4643-4d19-b7e9-4e3ebaacd671)
@@ -91,32 +102,45 @@ Now we log into the Domain Controller (DC-1) and install Active Directory Domain
 
 We now create two organizational units called "_EMPLOYEES" and "_ADMINS". To do this, open Active Directory Users and Computers --> right-click on mydomain.com and select "new"--> choose "Organizational Unit". 
 
+---
+
 
 ![image 17](https://github.com/user-attachments/assets/e7975006-ef6c-43ba-8f96-251ed537a1a3)
 ![image 18](https://github.com/user-attachments/assets/eadcc633-0799-48a4-a54b-8d3404ffdc60)
 
-Next step is to create a user. We will do this in the _ADMINS organizational unit -->right-click and choose new -->user. This users name is Kate Doe and will have the username "kate_admin".
+Next step is to create a user. We will do this in the _ADMINS organizational unit --> right-click and choose new --> user. This users name is Kate Doe and will have the username "kate_admin".
+
+
+---
 
 ![image 20](https://github.com/user-attachments/assets/323682e5-b769-4cf5-9906-6f4b9fe5b242)
 
 Next, we will add Kate as a Domain Admin. To do this right-click on Kates account --> properties --> member off --> click "add". Now a new promp will appear. Here you can write in "domain admins"--> check name (it will find a domain admin build in group)--> ok. Apply the changes.
 Now, we will log out of DC-1 and reconnect using RDP with the credentials "mydomain.com\kate_admin" and the assigned password. We will use this account for all future logins to DC-1. 
 
+---
+
 
 ![image 21](https://github.com/user-attachments/assets/376650cc-9448-4b11-9e74-367cf0fb871f)
 
 
-Next step is to join Client-1 to the domain. (We have already set Client-1's DNS settings to the DC1's Private IP address from the Azure Portal). So to do this, log into Client-1 VM. Right-click on the Windows logo, select System--> rename this PC (Advances). A new promp will appera, click Change. In the new promp select Domain and enter the domain name "mydomain.com" --> ok. The VM will restart to aplly the changes.
+Next step is to join Client-1 to the domain. (We have already set Client-1's DNS settings to the DC1's Private IP address from the Azure Portal). So to do this, log into Client-1 VM. Right-click on the Windows logo, select System --> rename this PC (Advances). A new promp will appera, click Change. In the new promp select Domain and enter the domain name "mydomain.com" --> ok. The VM will restart to aplly the changes.
+
+---
 
 
 ![image 23](https://github.com/user-attachments/assets/1e5cee8f-1397-431c-9a46-adf209dbc041)
 
 Go back to DC-1 and open Active Directory Users and Computers. We will now create another organizational unit named _CLIENTS under mydomain.com
 
+---
+
 ![Screenshot 2025-05-29 110551](https://github.com/user-attachments/assets/d5de3dfe-f145-4ec6-927c-7c0a95c09b5b)
 
 The next step is to allow domain users to RDP access into the VM. To to this, we go back to Azure portal and log into Client-1 VM as Kate_admin. Once inside the VM, right-click on the Windows logo and select "system". Find "Remote Deskctop" on the left side and click on it. Click on "Select users that can remotely access this PC". 
-Now a new prompt will appear--> click on add --> wite "Domain Users" (you can click on "check names" to be sure you wrote the correct name) --> click OK. 
+Now a new prompt will appear --> click on "add" --> wite "Domain Users" (you can click on "check names" to be sure you wrote the correct name) --> click OK. 
+
+---
 
 
 ![Screenshot 2025-05-29 111011](https://github.com/user-attachments/assets/c1b9599d-d9b9-4b2f-bf18-1b5aafa9ea07)
@@ -127,10 +151,14 @@ Now a new prompt will appear--> click on add --> wite "Domain Users" (you can cl
 In this step we will use a script found here: https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1. 
 Log into DC-1 as Kate_admin and open PowerShell ISE as an administrator. Create a new file and paste the script into it, then execute it. Now we can observe as thousands of accounts are created automatically. 
 
+---
+
 
 ![Screenshot 2025-05-29 115011](https://github.com/user-attachments/assets/63c43d02-700e-4c27-98f5-605c3f60bfe0)
 
 After running the script, we open Active Directory Users and Computers to vertify that the account have been created. Click on the folder "_EMPLOYEES". Here you will see the accounts in the appropriate organizational unit. 
+
+---
 
 
 ![Screenshot 2025-05-29 115236](https://github.com/user-attachments/assets/d2b507f0-6b08-4ec9-b115-63223da66b41)
