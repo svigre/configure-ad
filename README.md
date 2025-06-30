@@ -25,6 +25,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 - Join the Client-1 VM to the domain of the DC-1 VM
 - Install Active Directory Domain Services on the DC-1 VM
 - Set up our domain admin user in DC-1
+- Generate users with script
 
 
 <h2>Deployment and Configuration Steps</h2>
@@ -55,7 +56,7 @@ Once you have created both of the VMs, we will configure the IP address on the d
 
 
 
-Next step is to enter the domain controller (DC-1) through a Remote Desktop Connection (RDP). Here we will disable the firewall for the domain, private and publick profile. To do this we right-click the windows symbol and select "run", or you can simply click on "windown button+R". Type in "wf.msc" --> ok. 
+Next step is to enter the domain controller (DC-1) through a Remote Desktop Connection (RDP). Here we will disable the firewall for the domain, private and public profile. To do this we right-click the windows symbol and select "run", or you can simply click on "windows button+R". Type in "wf.msc" --> ok. 
 In the Windows Defender Firewall window, ensure the firewall is turned off for all profiles, then click "apply" and "ok".  
 </p>
 <br />
@@ -115,7 +116,7 @@ Next step is to create a user. We will do this in the _ADMINS organizational uni
 
 ![image 20](https://github.com/user-attachments/assets/323682e5-b769-4cf5-9906-6f4b9fe5b242)
 
-Next, we will add Kate as a Domain Admin. To do this right-click on Kates account --> properties --> member off --> click "add". Now a new promp will appear. Here you can write in "domain admins"--> check name (it will find a domain admin build in group)--> ok. Apply the changes.
+Next, we will add Kate as a Domain Admin. To do this right-click on Kates account --> properties --> member off --> click "add". Now a new prompt will appear. Then write "domain admins"--> check name (it will find a domain admin build in group)--> ok. Apply the changes.
 Now, we will log out of DC-1 and reconnect using RDP with the credentials "mydomain.com\kate_admin" and the assigned password. We will use this account for all future logins to DC-1. 
 
 ---
@@ -124,7 +125,7 @@ Now, we will log out of DC-1 and reconnect using RDP with the credentials "mydom
 ![image 21](https://github.com/user-attachments/assets/376650cc-9448-4b11-9e74-367cf0fb871f)
 
 
-Next step is to join Client-1 to the domain. (We have already set Client-1's DNS settings to the DC1's Private IP address from the Azure Portal). So to do this, log into Client-1 VM. Right-click on the Windows logo, select System --> rename this PC (Advances). A new promp will appera, click Change. In the new promp select Domain and enter the domain name "mydomain.com" --> ok. The VM will restart to aplly the changes.
+Next step is to join Client-1 to the domain (We have already set Client-1's DNS settings to the DC1's Private IP address from the Azure Portal). To do this, log into Client-1 VM. Right-click on the Windows logo, select System --> rename this PC (Advances). A new prompt will appear, click Change. In the new prompt select Domain and enter the domain name "mydomain.com" --> ok. The VM will restart to apply the changes.
 
 ---
 
@@ -137,7 +138,7 @@ Go back to DC-1 and open Active Directory Users and Computers. We will now creat
 
 ![Screenshot 2025-05-29 110551](https://github.com/user-attachments/assets/d5de3dfe-f145-4ec6-927c-7c0a95c09b5b)
 
-The next step is to allow domain users to RDP access into the VM. To to this, we go back to Azure portal and log into Client-1 VM as Kate_admin. Once inside the VM, right-click on the Windows logo and select "system". Find "Remote Deskctop" on the left side and click on it. Click on "Select users that can remotely access this PC". 
+The next step is to allow domain users to RDP access into the VM. To do this, we go back to Azure portal and log into Client-1 VM as Kate_admin. Once inside the VM, right-click on the Windows logo and select "system". Find "Remote Desktop" on the left side and click on it. Click on "Select users that can remotely access this PC". 
 Now a new prompt will appear --> click on "add" --> wite "Domain Users" (you can click on "check names" to be sure you wrote the correct name) --> click OK. 
 
 ---
