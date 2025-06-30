@@ -40,7 +40,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 
 
-First step, we need to create two Virtual Machines: One running  Windows Server 2022, named DC-1. Pick the VM with 2vcpus. The other VM will run on Windows 10, named Client1. Pick the VM with 2vcpus. Both VM's should be connetcted to the same virtual network (VNet). 
+First step, we need to create two Virtual Machines: One running  Windows Server 2022, named DC-1. Pick the VM with 2vcpus. The other VM will run on Windows 10, named Client1. Pick the VM with 2vcpus. Both VM's should be connected to the same virtual network (VNet). 
 Once you have created both of the VMs, we will configure the IP address on the domain controller (DC-1), changing it from dynamic to static. By doing this, we will ensure that the client VM (Client-1) can join the domain and use DC-1 as its DNS server.   
 
 ---
