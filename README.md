@@ -79,11 +79,15 @@ To do this, open Powershell as an administrator and write in the command "ping".
 <br />
 <h2></h2>
 
-<p>
+<p> 
+<img src="https://imgur.com/LpRSCNg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://imgur.com/2seRFTe.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Now we log into the Domain Controller (DC-1) and install Active Directory Domain Services (AD DS).
+Now we log into the Domain Controller (DC-1) and install Active Directory Domain Services (AD DS). To do this, click on Start and select Server Manager. Once inside Server Manager, click "Add roles and features". Now a new propmt will appear. Under " Server Roles", select "Active Directory Domain Services". 
+Under confirmation make sure that you selected "Active Directory Domain Services". Then install. 
+
+
 </p>
 <br />
 <h2></h2>
