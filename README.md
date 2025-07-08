@@ -84,7 +84,7 @@ To do this, open Powershell as an administrator and write in the command "ping".
 <img src="https://imgur.com/2seRFTe.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Now we log into the Domain Controller (DC-1) and install Active Directory Domain Services (AD DS). To do this, click on Start and select Server Manager. Once inside Server Manager, click "Add roles and features". Now a new propmt will appear. Under " Server Roles", select "Active Directory Domain Services". 
+Now we log into the Domain Controller (DC-1) and install Active Directory Domain Services (AD DS). To do this, click on Start and select Server Manager. Once inside Server Manager, click "Add roles and features". Now a new pop-up will appear. Under " Server Roles", select "Active Directory Domain Services". 
 Under confirmation make sure that you selected "Active Directory Domain Services". Then install. 
 
 
@@ -126,7 +126,7 @@ Next step is to create a user. We will do this in the _ADMINS organizational uni
 </p>
 <p>
 Next, we will add Kate as a Domain Admin. To do this right-click on Kates account --> properties --> member off 
---> click "add". Now a new prompt will appear. Then write "domain admins"--> check name (it will find a domain admin build in group)
+--> click "add". Now a new ppo-up will appear. Then write "domain admins"--> check name (it will find a domain admin build in group)
 )--> ok. Apply the changes.  Now, we will log out of DC-1 and reconnect using RDP with the credentials "mydomain.com\kate_admin" and the assigned password. 
 We will use this account for all future logins to DC-1.
 </p>
@@ -139,7 +139,7 @@ We will use this account for all future logins to DC-1.
 <p>
 Next step is to join Client-1 to the domain (We have already set Client-1's DNS settings to the DC1's Private IP address from the Azure Portal).
 To do this, log into Client-1 VM. Right-click on the Windows logo, select System --> rename this PC (Advances).
-A new prompt will appear, click Change. In the new prompt select Domain and enter the domain name "mydomain.com" --> ok. The VM will restart to apply the changes.
+A new pop-up will appear, click Change. In the new ppo-up select Domain and enter the domain name "mydomain.com" --> ok. The VM will restart to apply the changes.
 </p>
 <br />
 <h2></h2>
@@ -160,8 +160,7 @@ Go back to DC-1 and open Active Directory Users and Computers. We will now creat
 <p>
 The next step is to allow domain users to RDP access into the VM. To do this, we go back to Azure portal and log into Client-1 VM as Kate_admin.
 Once inside the VM, right-click on the Windows logo and select "system". Find "Remote Desktop" on the left side and click on it.
-Click on "Select users that can remotely access this PC". 
-Now a new prompt will appear --> click on "add" --> wite "Domain Users" (you can click on "check names" to be sure you wrote the correct name) --> click OK.
+Click on "Select users that can remotely access this PC" --> click on "add" --> wite "Domain Users" (you can click on "check names" to be sure you wrote the correct name) --> click OK.
 </p>
 <br />
 <h2></h2>
